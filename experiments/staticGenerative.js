@@ -7,7 +7,7 @@ let y = innerHeight/2;
 let weirdThing = y + 7;
 
 function setup() {
-  createCanvas(600, 600);
+  createCanvas(innerWidth, innerHeight);
   background(0, 0, 0);
 
 }
