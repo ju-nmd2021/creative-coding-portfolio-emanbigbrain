@@ -1,12 +1,7 @@
 //code example from Garrit Schaap
-let synth;
 
 window.addEventListener("load", () => {
-  synth = new Tone.MonoSynth().toDestination();
-});
-
-window.addEventListener("click", () => {
-  Tone.start();
+  oscillator = new Tone.Oscillator(440, "sine").toDestination();
 });
 
 class Element {
@@ -14,9 +9,11 @@ class Element {
     this.position = createVector(x, y);
     this.velocity = createVector(0, 4);
     this.acceleration = createVector(0, 0);
-    this.size = random(5);
+    this.size = Math.round(random(5));
     this.mass = 2;
   }
+
+
 
   applyForce(force) {
     let newForce = force.copy();
@@ -34,6 +31,22 @@ class Element {
   draw() {
     noStroke();
     ellipse(this.position.x, this.position.y, this.size);
+  }
+
+    oscillatorSound() {
+      oscillator.volume.value = Math.round(this.position.y * 0.05);
+      
+    if (this.size == 1) {
+      oscillator.frequency.value = 110;
+    } else if (this.size == 2) {
+      oscillator.frequency.value = 130;
+    } else if (this.size == 3) {
+      oscillator.frequency.value = 150;
+    } else if (this.size == 4) {
+      oscillator.frequency.value = 160;
+    } else if (this.size == 5) {
+      oscillator.frequency.value = 180;
+    }
   }
 }
 
@@ -72,6 +85,10 @@ let attractor;
 let G = 1;
 let drawThings;
 
+let synth;
+let oscillator
+
+
 
 function setup() {
 
@@ -97,23 +114,13 @@ background(0, 0, 0);
 
 
 function draw() {
-  if (Element.size == 1){
-    synth.triggerAttackRelease("D3", "4n");
-  } else if (Element.size == 2) {
-    synth.triggerAttackRelease("D3", "4n");
-  } else if (Element.size == 3) {
-    synth.triggerAttackRelease("D3", "4n");
-  } else if (Element.size == 4) {
-    synth.triggerAttackRelease("D3", "4n");
-  } else if (Element.size == 5){
-    synth.triggerAttackRelease("D3", "4n");
-  }
 
-   fill(random(20), random(255), random(255));
+  fill(random(20), random(255), random(255));
   let force = attractor.attract(element);
   element.applyForce(force);
   element.update();
   element.draw();
+  element.oscillatorSound();
   
   if (element2) {
   force = attractor.attract(element2);
@@ -141,7 +148,10 @@ function draw() {
   attractor.draw();
 }
  
+window.addEventListener("click", () => {
+  Tone.start();
+  oscillator.start();
 
-
+});
 
 
