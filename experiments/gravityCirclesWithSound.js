@@ -1,4 +1,14 @@
 //code example from Garrit Schaap
+let synth;
+
+window.addEventListener("load", () => {
+  synth = new Tone.MonoSynth().toDestination();
+});
+
+window.addEventListener("click", () => {
+  Tone.start();
+});
+
 class Element {
   constructor(x, y) {
     this.position = createVector(x, y);
@@ -53,8 +63,6 @@ class Attractor {
   }
 }
 
-
-
 let element;
 let element2;
 let element3;
@@ -62,10 +70,11 @@ let element4;
 
 let attractor;
 let G = 1;
+let drawThings;
 
 
 function setup() {
-  
+
   createCanvas(innerWidth, innerHeight);
   element = new Element(100, 200);
   attractor = new Attractor(400, 300);
@@ -82,11 +91,25 @@ function setup() {
   }, 3000);
 
 background(0, 0, 0);
-}
+
+} 
+
+
 
 function draw() {
+  if (Element.size == 1){
+    synth.triggerAttackRelease("D3", "4n");
+  } else if (Element.size == 2) {
+    synth.triggerAttackRelease("D3", "4n");
+  } else if (Element.size == 3) {
+    synth.triggerAttackRelease("D3", "4n");
+  } else if (Element.size == 4) {
+    synth.triggerAttackRelease("D3", "4n");
+  } else if (Element.size == 5){
+    synth.triggerAttackRelease("D3", "4n");
+  }
 
-  fill(random(20), random(255), random(255));
+   fill(random(20), random(255), random(255));
   let force = attractor.attract(element);
   element.applyForce(force);
   element.update();
@@ -117,3 +140,8 @@ function draw() {
   
   attractor.draw();
 }
+ 
+
+
+
+
