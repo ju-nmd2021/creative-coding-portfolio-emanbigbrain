@@ -36,6 +36,7 @@ class Element {
     oscillatorSound() {
       oscillator.volume.value = Math.round(this.position.y * 0.05);
       
+      
     if (this.size == 1) {
       oscillator.frequency.value = 110;
     } else if (this.size == 2) {
@@ -127,7 +128,7 @@ function draw() {
   element2.applyForce(force);
   element2.update();
   element2.draw();
-  element.oscillatorSound();
+
   }
 
   if (element3) {
@@ -136,7 +137,7 @@ function draw() {
     element3.applyForce(force);
     element3.update();
     element3.draw();
-    element.oscillatorSound();
+    
   }
 
   if (element4) {
@@ -145,7 +146,7 @@ function draw() {
     element4.applyForce(force);
     element4.update();
     element4.draw();
-    element.oscillatorSound();
+    
   }
   
   attractor.draw();
