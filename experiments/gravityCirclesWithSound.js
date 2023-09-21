@@ -86,7 +86,7 @@ let G = 1;
 let drawThings;
 
 let synth;
-let oscillator
+let oscillator;
 
 
 
@@ -127,6 +127,7 @@ function draw() {
   element2.applyForce(force);
   element2.update();
   element2.draw();
+  element.oscillatorSound();
   }
 
   if (element3) {
@@ -135,6 +136,7 @@ function draw() {
     element3.applyForce(force);
     element3.update();
     element3.draw();
+    element.oscillatorSound();
   }
 
   if (element4) {
@@ -143,6 +145,7 @@ function draw() {
     element4.applyForce(force);
     element4.update();
     element4.draw();
+    element.oscillatorSound();
   }
   
   attractor.draw();
