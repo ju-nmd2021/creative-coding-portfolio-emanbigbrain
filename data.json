@@ -1,12 +1,5 @@
 [
   {
-    "file": "experiments/example.js",
-    "name": "Name of your experiment",
-    "description": "Explains the what and the why. What is the main idea? What is the purpose? Describes the coding process and implementation choices and gives a high level system overview.",
-    "background": "Positions the work in a context by presenting related work and introducing aesthetic or scientific theories related to the work.",
-    "github": "https://www.github.com/pixelkind"
-  },
-  {
     "file": "experiments/staticGenerative.js",
     "name": "Yellow Tron Hills",
     "description": "Explains the what and the why. What is the main idea? What is the purpose? Describes the coding process and implementation choices and gives a high level system overview.",
@@ -15,14 +8,35 @@
   },
   {
     "file": "experiments/gravityCircles.js",
-    "name": "Blue Atom",
+    "name": "Blue Spirograph",
     "description": "Explains the what and the why. What is the main idea? What is the purpose? Describes the coding process and implementation choices and gives a high level system overview.",
     "background": "Positions the work in a context by presenting related work and introducing aesthetic or scientific theories related to the work.",
     "github": "https://www.github.com/pixelkind"
   },
   {
     "file": "experiments/gravityCirclesWithSound.js",
-    "name": "Gravity Circles With Sound",
+    "name": "Spirograph With Sound",
+    "description": "Explains the what and the why. What is the main idea? What is the purpose? Describes the coding process and implementation choices and gives a high level system overview.",
+    "background": "Positions the work in a context by presenting related work and introducing aesthetic or scientific theories related to the work.",
+    "github": "https://www.github.com/pixelkind"
+  },
+  {
+    "file": "experiments/customSpirograph.js",
+    "name": "Spirograph with Different Color Pallettes and Different Spirograph Styles",
+    "description": "Explains the what and the why. What is the main idea? What is the purpose? Describes the coding process and implementation choices and gives a high level system overview.",
+    "background": "Positions the work in a context by presenting related work and introducing aesthetic or scientific theories related to the work.",
+    "github": "https://www.github.com/pixelkind"
+  },
+  {
+    "file": "experiments/spirographTest.js",
+    "name": "Pixelated Spirograph with Different Color Pallettes and Different Spirograph Styles",
+    "description": "Explains the what and the why. What is the main idea? What is the purpose? Describes the coding process and implementation choices and gives a high level system overview.",
+    "background": "Positions the work in a context by presenting related work and introducing aesthetic or scientific theories related to the work.",
+    "github": "https://www.github.com/pixelkind"
+  },
+  {
+    "file": "experiments/rgbFadingSpirograph.js",
+    "name": "Fading Pixelated Spirograph",
     "description": "Explains the what and the why. What is the main idea? What is the purpose? Describes the coding process and implementation choices and gives a high level system overview.",
     "background": "Positions the work in a context by presenting related work and introducing aesthetic or scientific theories related to the work.",
     "github": "https://www.github.com/pixelkind"

@@ -1,19 +1,12 @@
 //code example from Garrit Schaap
-
-window.addEventListener("load", () => {
-  oscillator = new Tone.Oscillator(440, "sine").toDestination();
-});
-
 class Element {
   constructor(x, y) {
     this.position = createVector(x, y);
     this.velocity = createVector(0, 4);
     this.acceleration = createVector(0, 0);
-    this.size = Math.round(random(5));
-    this.mass = 2;
+    this.size = random(5, 10);
+    this.mass = random(2);
   }
-
-
 
   applyForce(force) {
     let newForce = force.copy();
@@ -30,24 +23,7 @@ class Element {
 
   draw() {
     noStroke();
-    ellipse(this.position.x, this.position.y, this.size);
-  }
-
-    oscillatorSound() {
-      oscillator.volume.value = Math.round(this.position.y * 0.05);
-      
-      
-    if (this.size == 1) {
-      oscillator.frequency.value = 110;
-    } else if (this.size == 2) {
-      oscillator.frequency.value = 130;
-    } else if (this.size == 3) {
-      oscillator.frequency.value = 150;
-    } else if (this.size == 4) {
-      oscillator.frequency.value = 160;
-    } else if (this.size == 5) {
-      oscillator.frequency.value = 180;
-    }
+    rect(this.position.x, this.position.y, this.size);
   }
 }
 
@@ -58,12 +34,12 @@ class Attractor {
   constructor(x, y) {
     this.position = createVector(x, y);
     this.size = 50;
-    this.mass = 300;
+    this.mass = Math.round(random(100, 500));
   }
 
   attract(element) {
     let force = p5.Vector.sub(this.position, element.position);
-    let distance = constrain(force.mag(), 5, 25);
+    let distance = constrain(force.mag(), random(15), 25);
     force.normalize();
     let m = (G * element.mass * this.mass) / (distance * distance);
     force.mult(m);
@@ -77,6 +53,8 @@ class Attractor {
   }
 }
 
+
+
 let element;
 let element2;
 let element3;
@@ -84,78 +62,61 @@ let element4;
 
 let attractor;
 let G = 1;
-let drawThings;
 
-let synth;
-let oscillator;
-
-
+let backgroundColor;
 
 function setup() {
-
+  backgroundColor = color(255, 255, 255);
+  backgroundColor.setAlpha(5);
   createCanvas(innerWidth, innerHeight);
-  element = new Element(100, 200);
+  element = new Element(random(50, 100), random(100, 200));
   attractor = new Attractor(400, 300);
   setTimeout(() => {
-      element2 = new Element(150, 210);
-  }, 1000);
+      element2 = new Element(random(100, 150), random(110, 210));
+  }, 300);
 
   setTimeout(() => {
-    element3 = new Element(180, 220);
-  }, 2000);
+    element3 = new Element(random(130, 180), random(120, 220));
+  }, 300);
 
   setTimeout(() => {
-    element4 = new Element(210, 230);
-  }, 3000);
+    element4 = new Element(random(160, 210), random(130, 230));
+  }, 300);
 
-background(0, 0, 0);
-
-} 
-
-
+  background(255, 255, 255);
+}
 
 function draw() {
-
-  fill(random(255), random(255), random(20));
+  background(backgroundColor);
+  fill(255, 255, 255);
   let force = attractor.attract(element);
   element.applyForce(force);
   element.update();
   element.draw();
-  element.oscillatorSound();
   
   if (element2) {
+  fill(255, 0, 0);
   force = attractor.attract(element2);
   element2.applyForce(force);
   element2.update();
   element2.draw();
-
   }
 
   if (element3) {
+    fill(0, 255, 0);
     force = attractor.attract(element3);
-
     element3.applyForce(force);
     element3.update();
     element3.draw();
-    
   }
 
   if (element4) {
+    fill(0, 0, 255);
     force = attractor.attract(element4);
-
     element4.applyForce(force);
     element4.update();
     element4.draw();
-    
   }
   
   attractor.draw();
 }
- 
-window.addEventListener("click", () => {
-  Tone.start();
-  oscillator.start();
-
-});
-
-
